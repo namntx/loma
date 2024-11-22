@@ -75,6 +75,7 @@
     <link rel="preconnect" href="https://api1.ldpform.com/" crossorigin />
     <link rel="preconnect" href="https://a.ladipage.com/" crossorigin />
     <link rel="preconnect" href="https://api.sales.ldpform.net/" crossorigin />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -7746,6 +7747,25 @@
       src="https://w.ladicdn.com/v4/source/ladipagev3.min.js?v=1728095393749"
       type="text/javascript"
     ></script>
+    <script>
+      // ... existing code ...
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1 && node.tagName === "DIV") {
+              // Check if the class name is random (you can adjust this condition)
+              if (node.className && node.className.trim() !== "") {
+                node.remove(); // Remove the div
+              }
+            }
+          });
+        });
+      });
+
+      // Start observing the body for added nodes
+      observer.observe(document.body, { childList: true, subtree: true });
+      // ... existing code ...
+    </script>
     <script id="script_event_data" type="application/json">
       {
         "SECTION1": {
